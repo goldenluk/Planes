@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Planes</string>
+    <string name="from_title">Откуда</string>
+    <string name="from_hint">Выберите город отправления</string>
+    <string name="to_title">Куда</string>
+    <string name="to_hint">Выберите город прибытия</string>
+    <string name="search_button_text">Искать</string>
+</resources>
