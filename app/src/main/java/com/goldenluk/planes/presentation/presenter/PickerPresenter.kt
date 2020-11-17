@@ -6,4 +6,15 @@ class PickerPresenter constructor(
     private val view: PickerView
 ) {
 
+    fun onFromCardClicked() {
+
+    }
+
+    fun onToCardClicked() {
+
+    }
+
+    fun onSearchButtonClicked() {
+
+    }
 }
