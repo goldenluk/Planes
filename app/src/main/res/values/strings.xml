@@ -5,4 +5,5 @@
     <string name="to_title">Куда</string>
     <string name="to_hint">Выберите город прибытия</string>
     <string name="search_button_text">Искать</string>
+    <string name="search_hint">Начните вводить</string>
 </resources>

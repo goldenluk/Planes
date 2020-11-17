@@ -38,6 +38,16 @@ class PickerActivity : AppCompatActivity(), PickerView {
         toCityView.text = toCity
     }
 
+    override fun showSelectFromScreen() {
+        val selectFragment = SelectCityBottomFragment.newInstance(isFrom = true)
+        selectFragment.show(supportFragmentManager, "")
+    }
+
+    override fun showSelectToScreen() {
+        val selectFragment = SelectCityBottomFragment.newInstance(isFrom = false)
+        selectFragment.show(supportFragmentManager, "")
+    }
+
     private fun setListeners() {
         fromCityCard.setOnClickListener {
             presenter.onFromCardClicked()

@@ -7,11 +7,11 @@ class PickerPresenter constructor(
 ) {
 
     fun onFromCardClicked() {
-
+        view.showSelectFromScreen()
     }
 
     fun onToCardClicked() {
-
+        view.showSelectToScreen()
     }
 
     fun onSearchButtonClicked() {
