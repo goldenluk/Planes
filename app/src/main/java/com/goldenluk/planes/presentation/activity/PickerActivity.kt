@@ -1,5 +1,6 @@
-package com.goldenluk.planes.presentation
+package com.goldenluk.planes.presentation.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
@@ -7,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import com.goldenluk.planes.R
 import com.goldenluk.planes.data.dto.CityDto
+import com.goldenluk.planes.presentation.SelectCityBottomFragment
 import com.goldenluk.planes.presentation.presenter.PickerPresenter
 import com.goldenluk.planes.presentation.view.PickerView
 
@@ -54,18 +56,28 @@ class PickerActivity : AppCompatActivity(), PickerView {
     }
 
     override fun showSelectFromScreen() {
-        val selectFragment = SelectCityBottomFragment.newInstance(isFrom = true)
+        val selectFragment =
+            SelectCityBottomFragment.newInstance(
+                isFrom = true
+            )
         selectFragment.show(supportFragmentManager, "")
     }
 
     override fun showSelectToScreen() {
-        val selectFragment = SelectCityBottomFragment.newInstance(isFrom = false)
+        val selectFragment =
+            SelectCityBottomFragment.newInstance(
+                isFrom = false
+            )
         selectFragment.show(supportFragmentManager, "")
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         presenter.onSaveInstanceState(outState)
         super.onSaveInstanceState(outState)
+    }
+
+    override fun showMap(fromCity: CityDto, toCity: CityDto) {
+        startActivity(Intent(this, MapActivity::class.java))
     }
 
     private fun setListeners() {

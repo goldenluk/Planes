@@ -23,7 +23,11 @@ class PickerPresenter constructor(
     }
 
     fun onSearchButtonClicked() {
-
+        val localToCity = toCity
+        val localFromCity = fromCity
+        if (localFromCity != null && localToCity != null) {
+            view.showMap(localFromCity, localToCity)
+        }
     }
 
     fun onFromCitySet(city: CityDto) {

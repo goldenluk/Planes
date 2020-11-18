@@ -11,4 +11,6 @@ interface PickerView {
     fun showSelectFromScreen()
 
     fun showSelectToScreen()
+
+    fun showMap(fromCity: CityDto, toCity: CityDto)
 }
