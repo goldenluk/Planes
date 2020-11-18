@@ -12,6 +12,9 @@ import com.goldenluk.planes.presentation.SelectCityBottomFragment
 import com.goldenluk.planes.presentation.presenter.PickerPresenter
 import com.goldenluk.planes.presentation.view.PickerView
 
+private const val TO_CITY_KEY = "to_city"
+private const val FROM_CITY_KEY = "from_city"
+
 class PickerActivity : AppCompatActivity(), PickerView {
 
     private lateinit var fromCityCard: CardView
@@ -77,7 +80,10 @@ class PickerActivity : AppCompatActivity(), PickerView {
     }
 
     override fun showMap(fromCity: CityDto, toCity: CityDto) {
-        startActivity(Intent(this, MapActivity::class.java))
+        val intent = Intent(this, MapActivity::class.java)
+            .putExtra(TO_CITY_KEY, toCity)
+            .putExtra(FROM_CITY_KEY, fromCity)
+        startActivity(intent)
     }
 
     private fun setListeners() {

@@ -83,7 +83,6 @@ class SelectCityBottomFragment : BottomSheetDialogFragment() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeBy(
                 onError = {
-                    // TODO обработка ошибок
                 },
                 onNext = {
                     onCitiesLoaded(it)
@@ -106,7 +105,6 @@ class SelectCityBottomFragment : BottomSheetDialogFragment() {
             }
             this.dismiss()
         }
-        // TODO добавить дифутил
         recycler.adapter = adapter
     }
 
