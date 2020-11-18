@@ -28,6 +28,9 @@ class PickerActivity : AppCompatActivity(), PickerView {
         toCityView = findViewById(R.id.to_city)
         searchButton = findViewById(R.id.search_button)
         presenter = PickerPresenter(this)
+        savedInstanceState?.let {
+            presenter.onCreate(it)
+        }
     }
 
     override fun onStart() {
@@ -42,10 +45,12 @@ class PickerActivity : AppCompatActivity(), PickerView {
 
     override fun setFromCity(fromCity: CityDto) {
         fromCityView.text = fromCity.fullName
+        presenter.onFromCitySet(fromCity)
     }
 
     override fun setToCity(toCity: CityDto) {
         toCityView.text = toCity.fullName
+        presenter.onToCitySet(toCity)
     }
 
     override fun showSelectFromScreen() {
@@ -56,6 +61,11 @@ class PickerActivity : AppCompatActivity(), PickerView {
     override fun showSelectToScreen() {
         val selectFragment = SelectCityBottomFragment.newInstance(isFrom = false)
         selectFragment.show(supportFragmentManager, "")
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        presenter.onSaveInstanceState(outState)
+        super.onSaveInstanceState(outState)
     }
 
     private fun setListeners() {
