@@ -1,4 +1,4 @@
-package com.goldenluk.planes.data
+package com.goldenluk.planes.data.dto
 
 import com.google.gson.annotations.SerializedName
 

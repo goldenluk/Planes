@@ -6,6 +6,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import com.goldenluk.planes.R
+import com.goldenluk.planes.data.dto.CityDto
 import com.goldenluk.planes.presentation.presenter.PickerPresenter
 import com.goldenluk.planes.presentation.view.PickerView
 
@@ -27,15 +28,24 @@ class PickerActivity : AppCompatActivity(), PickerView {
         toCityView = findViewById(R.id.to_city)
         searchButton = findViewById(R.id.search_button)
         presenter = PickerPresenter(this)
+    }
+
+    override fun onStart() {
+        super.onStart()
         setListeners()
     }
 
-    override fun setFromCity(fromCity: String) {
-        fromCityView.text = fromCity
+    override fun onStop() {
+        super.onStop()
+        clearListeners()
     }
 
-    override fun setToCity(toCity: String) {
-        toCityView.text = toCity
+    override fun setFromCity(fromCity: CityDto) {
+        fromCityView.text = fromCity.fullName
+    }
+
+    override fun setToCity(toCity: CityDto) {
+        toCityView.text = toCity.fullName
     }
 
     override fun showSelectFromScreen() {
@@ -58,5 +68,11 @@ class PickerActivity : AppCompatActivity(), PickerView {
         searchButton.setOnClickListener {
             presenter.onSearchButtonClicked()
         }
+    }
+
+    private fun clearListeners() {
+        fromCityCard.setOnClickListener(null)
+        toCityCard.setOnClickListener(null)
+        searchButton.setOnClickListener(null)
     }
 }
